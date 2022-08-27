@@ -161,3 +161,25 @@
 # t.right(120)
 #
 # t.mainloop()
+
+
+'''21번'''
+import turtle as t
+t.shape('turtle')
+t.color('blue')
+t.forward(100)
+t.right(144)
+
+t.forward(100)
+t.right(144)
+
+t.forward(100)
+t.right(144)
+
+t.forward(100)
+t.right(144)
+
+t.forward(100)
+t.right(144)
+
+t.mainloop()
