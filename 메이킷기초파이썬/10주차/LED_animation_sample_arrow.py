@@ -23,6 +23,14 @@ matrix_stack = [
     '00000'
 ]
 
+matrix_none = [
+    '00000',
+    '00000',
+    '00000',
+    '00000',
+    '00000'
+]
+
 
 # matrix 초기화
 def reset_matrix():
@@ -76,7 +84,7 @@ while True:
             if i != len(matrix_stack) - 1:
                 _str += ':'
             img_str += _str
-            print(_str)
+            # print(_str)
         img = Image(img_str)
         # print(img_str)
         display.show(img)
@@ -94,7 +102,7 @@ while True:
             if i != len(matrix_stack) - 1:
                 _str += ':'
             img_str += _str
-            print(_str)
+            # print(_str)
         img = Image(img_str)
         # print(img_str)
         display.show(img)
@@ -103,5 +111,16 @@ while True:
     # 아무것도 누르지 않았을 때
     else:
         idx = 0
+        # 26번째 줄에 만들어놓은 matrix_none을 사용해서
+        # matrix_stack = matrix_none으로 스택을 초기화 하면 안되는 이유
+        # 위의 코드가 의미하는 것은 matrix_stack이 의미하는 주소를
+        # matrix_none이 의미하는 주소로 바꾼다는 것이다.
+        # 이 상태에서 list를 del 하고 append 해봤자 matrix_none이 의미하는
+        # 리스트의 상태가 변하는 것이기에 처음엔 [00000 ... ]이었지만
+        # [aaaaa, bbbbb, ... ] 등으로 변형되어 나중에
+        # matrix_stack = matrix_none이 호출 되어도 초기화의 기능을 수행하지 못 한다.
+
+        # 그렇기 때문에 따로 함수를 만들거나 하여 새로운 초기화 리스트를 만들어
+        # 대입해줘야 한다.
         matrix_stack = reset_matrix()
         display.clear()
