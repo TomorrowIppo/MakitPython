@@ -54,7 +54,7 @@ def del_index(_list, _idx):
 
 
 # 초기화 단계
-idx = 0
+idx = 0  # idx를 통해 matrix_arrow를 순회
 interval = 70
 # change_bright()
 
@@ -63,6 +63,8 @@ interval = 70
 matrix = change_bright(matrix_arrow, 9)
 while True:
     # diagonal_stack = del_index(diagonal_stack, 0)
+
+    # a 버튼을 눌렀을 때
     if button_a.is_pressed():
         del matrix_stack[0]
         if idx == len(matrix):
@@ -79,6 +81,8 @@ while True:
         # print(img_str)
         display.show(img)
         sleep(interval)
+
+    # b 버튼을 눌렀을 때
     elif button_b.is_pressed():
         del matrix_stack[len(matrix_stack) - 1]
         if idx == len(matrix):
@@ -95,14 +99,9 @@ while True:
         # print(img_str)
         display.show(img)
         sleep(interval)
+
+    # 아무것도 누르지 않았을 때
     else:
         idx = 0
-        img_str = ''
         matrix_stack = reset_matrix()
-        for i, _str in enumerate(matrix_stack):
-            if i != len(matrix_stack) - 1:
-                _str += ':'
-            img_str += _str
-            print(_str)
-        display.show(Image(img_str))
-        sleep(interval)
+        display.clear()
